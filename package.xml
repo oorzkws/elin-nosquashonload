@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Meta>
+  <title>No Squash on Tent</title>
+  <id>nosquashonload</id>
+  <author>mute</author>
+  <builtin>false</builtin>
+  <loadPriority>100</loadPriority>
+  <version>0.23.39</version>
+  <description>
+You will not die if you enter or exit a tent while squashed
+  </description>
+</Meta>

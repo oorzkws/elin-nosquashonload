@@ -1,0 +1,62 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <AssemblyName>NoSquashOnLoad</AssemblyName>
+        <Description>NoSquashOnLoad for Elin</Description>
+        <FileVersion>0.1.0</FileVersion>
+        <Version>0.1.0</Version>
+    </PropertyGroup>
+    <PropertyGroup>
+        <ElinGamePath>A:\SteamLibrary\steamapps\common\Elin</ElinGamePath>
+        <AssemblySearchPaths>$(ElinGamePath)\Elin_Data\Managed;$(ElinGamePath)\BepInEx\core;$(MSBuildProjectDirectory)</AssemblySearchPaths>
+        <OutputPath>$(ElinGamePath)\Package\Mod_$(AssemblyName)\</OutputPath>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <Nullable>annotations</Nullable>
+        <LangVersion>13.0</LangVersion>
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <Optimize>true</Optimize>
+        <DebugSymbols>false</DebugSymbols>
+        <DebugType>none</DebugType>
+        <RestoreAdditionalProjectSources>
+            https://api.nuget.org/v3/index.json;
+            https://nuget.bepinex.dev/v3/index.json;
+            https://nuget.samboy.dev/v3/index.json
+        </RestoreAdditionalProjectSources>
+    </PropertyGroup>
+    <ItemGroup>
+        <Content Include="package.xml">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all" />
+        <PackageReference Include="BepInEx.Unity" Version="6.0.0-*" IncludeAssets="compile" />
+        <PackageReference Include="BepInEx.PluginInfoProps" Version="1.*" />
+        <PackageReference Include="UnityEngine.Modules" Version="2021.3.34" IncludeAssets="compile" />
+    </ItemGroup>
+    
+    <ItemGroup>
+        <Reference Include="0Harmony" Private="False" />
+        <Reference Include="BepInEx.Core" Private="False" />
+        <Reference Include="BepInEx.Unity" Private="False" />
+        <Reference Include="Elin" Private="False" />
+        <Reference Include="mscorlib" Private="False" />
+        <Reference Include="Plugins.BaseCore" Private="False" />
+        <Reference Include="System" Private="False" />
+        <Reference Include="System.Core" Private="False" />
+        <Reference Include="UnityEngine" Private="False" />
+        <Reference Include="UnityEngine.CoreModule" Private="False" Aliases="UnityCore" />
+        <PackageReference Include="Krafs.Publicizer" Version="*">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <Publicize Include="0Harmony" />
+        <Publicize Include="BepInEx.Unity:BepInEx.BaseUnityPlugin.Logger" />
+        <Publicize Include="BepInEx.Core:BepInEx.Logging.Logger.Log" />
+    </ItemGroup>
+</Project>
