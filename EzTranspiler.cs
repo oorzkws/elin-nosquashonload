@@ -166,7 +166,7 @@ internal static class EzTranspiler {
             if (instructions.Count > 0)
             {
                 var lastInstruction = new FishInstruction(instructions.Last());
-                if (lastInstruction.OpCode == OpCodes.Ldloca_S || lastInstruction.OpCode == OpCodes.Ldloca)
+                if (lastInstruction.OpCode.LoadsLocalVariable())
                 {
                     // Fetch the instruction for Pin<T> where T is whatever type lastInstruction accesses...
                     var genericPin = Fish.Call(typeof(EzTranspiler), "Pin", generics:
