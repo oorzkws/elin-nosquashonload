@@ -3,16 +3,16 @@ using BepInEx.Logging;
 
 namespace NoSquashOnLoad;
 
-[BepInPlugin(PluginInfo.PLUGIN_GUID, PluginInfo.PLUGIN_NAME, PluginInfo.PLUGIN_VERSION)]
+[BepInPlugin(MyPluginInfo.PLUGIN_GUID, MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]
 internal class NoSquashOnLoad : BaseUnityPlugin
 {
-    internal static NoSquashOnLoad? Instance { get; set; }
+    internal static new ManualLogSource Logger { get; private set; }
 
     private void Awake()
     {
-        Instance = this;
-        var harmony = new Harmony(PluginInfo.PLUGIN_GUID);
+        Logger = base.Logger;
+        var harmony = new Harmony(MyPluginInfo.PLUGIN_GUID);
         harmony.PatchAll();
-        Logging.Log($"{PluginInfo.PLUGIN_NAME} version {PluginInfo.PLUGIN_VERSION} successfully loaded", LogLevel.Message);
+        Logging.Log($"{MyPluginInfo.PLUGIN_NAME} version {MyPluginInfo.PLUGIN_VERSION} successfully loaded", LogLevel.Message);
     }
 }

@@ -11,7 +11,7 @@ internal class SceneOnUpdatePatch {
         return EMono._zone is Zone_Tent || EMono.player.lastTransition.lastZone is Zone_Tent;
     }
 
-    [JetBrains.Annotations.UsedImplicitly]
+    [UsedImplicitly]
     public static CodeInstructions Transpiler(CodeInstructions instructions, MethodBase method)
     {
         var editor = new CodeMatcher(instructions);
